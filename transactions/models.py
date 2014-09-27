@@ -3,6 +3,8 @@ from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
 from accounts.models import Account
+from categories.models import Category
+from places.models import Place
 
 
 class Transaction(models.Model):
@@ -15,6 +17,8 @@ class Transaction(models.Model):
         related_name='transactions_to'
     )
     user = models.ForeignKey(User, null=True, blank=True)
+    place = models.ForeignKey(Place, null=True, blank=True)
+    category = models.ForeignKey(Category, null=True, blank=True)
     amount = models.DecimalField(
         max_digits=10,
         decimal_places=2,
