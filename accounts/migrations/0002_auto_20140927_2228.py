@@ -6,15 +6,14 @@ from django.conf import settings
 
 
 class Migration(migrations.Migration):
+  dependencies = [
+    ('accounts', '0001_initial'),
+  ]
 
-    dependencies = [
-        ('accounts', '0001_initial'),
-    ]
-
-    operations = [
-        migrations.AlterField(
-            model_name='account',
-            name='user',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='accounts'),
-        ),
-    ]
+  operations = [
+    migrations.AlterField(
+      model_name='account',
+      name='user',
+      field=models.ForeignKey(to=settings.AUTH_USER_MODEL, related_name='accounts'),
+    ),
+  ]
