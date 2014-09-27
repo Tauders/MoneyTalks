@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {{ block.super }}
+  {% if object_list %}
+    <ol>
+      {% for transaction in object_list %}
+        <li>
+          {{ transaction }}
+        </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+{% endblock content %}
