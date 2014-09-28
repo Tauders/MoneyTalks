@@ -37,11 +37,14 @@ INSTALLED_APPS = (
   'django.contrib.sessions',
   'django.contrib.messages',
   'django.contrib.staticfiles',
+  'registration',
   'accounts',
   'categories',
   'places',
   'transactions',
 )
+
+REGISTRATION_AUTO_LOGIN = True # Automatically log the user in.
 
 MIDDLEWARE_CLASSES = (
   'django.contrib.sessions.middleware.SessionMiddleware',

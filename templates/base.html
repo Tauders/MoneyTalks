@@ -2,11 +2,16 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>{% block title %}Заголовок{% endblock %}</title>
 </head>
+
 <body>
-{% block content %}
-    Hello world!
-{% endblock content %}
+    <div id="sidebar">
+        {% block sidebar %}{% endblock %}
+    </div>
+
+    <div id="content">
+        {% block content %}{% endblock %}
+        {% block main_content %}{% endblock %}
+    </div>
 </body>
-</html>

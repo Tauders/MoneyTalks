@@ -9,4 +9,7 @@ urlpatterns = patterns('',
                        url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^transactions/', include('transactions.urls')),
+                       url(r'^accounts/', include('registration.backends.simple.urls')),
+                       url(r'^accounts/profile/', TemplateView.as_view(template_name='registration/profile.html'),
+                           name='auth_profile'),
 )
