@@ -7,5 +7,8 @@ class Category(models.Model):
     parent = models.ForeignKey('self', null=True, blank=True)
     user = models.ForeignKey(User, related_name='categories')
 
+    class Meta:
+        verbose_name_plural = 'categories'
+
     def __str__(self):
         return self.name
