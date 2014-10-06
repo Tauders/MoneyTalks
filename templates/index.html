@@ -2,7 +2,8 @@
 {% block title %}Главная страница{% endblock %}
 {% block content %}
     {% if user.is_authenticated %}
-        <p>Вы вошли как <a href="{% url 'auth_profile' %}">{{ user.username }}</a>. <a href="{% url 'auth_logout' %}">Выйти</a>.</p>
+        <p>Вы вошли как <a href="{% url 'auth_profile' %}">{{ user.username }}</a>. <a href="{% url 'auth_logout' %}">Выйти</a>.
+        </p>
     {% else %}
         <p>Вы не вошли, пожалуйста войдите или зарегистрируйтесь.</p>
     {% endif %}
@@ -10,6 +11,7 @@
     <ul>
         <li><a href="/admin">Админка</a></li>
         <li><a href="/transactions">Транзакции</a></li>
+        <li><a href="/places">Места</a></li>
         <li><a href="{% url 'registration_register' %}">Регистрация</a></li>
         <li><a href="{% url 'auth_login' %}">Вход</a></li>
     </ul>
