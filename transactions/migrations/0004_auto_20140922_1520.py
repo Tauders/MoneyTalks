@@ -6,14 +6,14 @@ from django.conf import settings
 
 
 class Migration(migrations.Migration):
-  dependencies = [
-    ('transactions', '0003_auto_20140922_1507'),
-  ]
+    dependencies = [
+        ('transactions', '0003_auto_20140922_1507'),
+    ]
 
-  operations = [
-    migrations.AlterField(
-      model_name='transaction',
-      name='user',
-      field=models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True),
-    ),
-  ]
+    operations = [
+        migrations.AlterField(
+            model_name='transaction',
+            name='user',
+            field=models.ForeignKey(to=settings.AUTH_USER_MODEL, blank=True, null=True),
+        ),
+    ]
