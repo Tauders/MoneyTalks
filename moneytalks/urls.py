@@ -13,4 +13,5 @@ urlpatterns = patterns('',
                        url(r'^accounts/profile/', TemplateView.as_view(template_name='registration/profile.html'),
                            name='auth_profile'),
                        url(r'^places/', include('places.urls')),
+                       url(r'^categories/', include('categories.urls')),
 )
