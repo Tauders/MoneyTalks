@@ -4,12 +4,12 @@
 {% block title %}{% trans "Account Activated" %}{% endblock %}
 
 {% block content %}
-<p>
+  <p>
     {% trans "Your account is now activated." %}
     {% if not user.is_authenticated %}
-    {% trans "You can log in." %}
+      {% trans "You can log in." %}
     {% endif %}
-</p>
+  </p>
 {% endblock %}
 
 

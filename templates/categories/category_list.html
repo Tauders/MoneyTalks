@@ -4,9 +4,9 @@
   {{ block.super }}
   {% if object_list %}
     <ol>
-      {% for place in object_list %}
+      {% for category in object_list %}
         <li>
-          <a href="update/{{ place.pk }}/">{{ place }}</a> <a href="delete/{{ place.pk }}/">Удалить</a>
+          <a href="update/{{ category.pk }}/">{{ category }}</a> <a href="delete/{{ category.pk }}/">Удалить</a>
         </li>
       {% endfor %}
     </ol>

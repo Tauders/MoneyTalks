@@ -4,4 +4,4 @@ from transactions.models import Transaction
 
 
 class TransactionList(ListView):
-  model = Transaction
+    model = Transaction

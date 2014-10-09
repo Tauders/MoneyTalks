@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}Account Profile{% endblock %}
 {% block content %}
-    Ваш ник - {{ user.username }}<br>
-    Ваш email - {{ user.email }}<br>
-    Сменить пароль - <a href="{% url 'auth_password_change' %}">Сменить</a>
+  Ваш ник - {{ user.username }}<br>
+  Ваш email - {{ user.email }}<br>
+  Сменить пароль - <a href="{% url 'auth_password_change' %}">Сменить</a>
 {% endblock %}
