@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
-<form action="." method="POST">
-  {{ form }}
-  {% csrf_token %}
-  <br><input type="submit" value="Далее"/>
-</form>
+{% block content %}
+  <form action="." method="POST">
+    {{ form }}
+    {% csrf_token %}
+    <br><input type="submit" value="Далее"/>
+  </form>
+{% endblock content %}
