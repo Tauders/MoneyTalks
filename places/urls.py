@@ -14,7 +14,6 @@ urlpatterns = patterns('',
                            view=PlaceCreateView.as_view(),
                            name='place_create'
                        ),
-
                        url(
                            regex=r'^delete/(?P<pk>\d+)/$',
                            view=PlaceDeleteView.as_view(),
