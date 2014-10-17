@@ -1,5 +1,9 @@
-<h1>Удалить?</h1>
-{{ object }}
-<form action="." method="post">{% csrf_token %}
-  <input type="submit" value="Удалить"/>
-</form>
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Удалить?</h1>
+  {{ object }}
+  <form action="." method="post">{% csrf_token %}
+    <input type="submit" value="Удалить"/>
+  </form>
+{% endblock content %}

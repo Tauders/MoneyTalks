@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {{ block.super }}
+  {% if object_list %}
+    <ol>
+      {% for place in object_list %}
+        <li>
+          <a href="update/{{ place.pk }}/">{{ place }}</a> <a href="delete/{{ place.pk }}/">Удалить</a>
+        </li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+  <ul>
+    <li><a href="create/">Создать</a></li>
+  </ul>
+{% endblock content %}

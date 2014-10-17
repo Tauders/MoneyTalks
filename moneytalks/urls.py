@@ -12,6 +12,7 @@ urlpatterns = patterns('',
                        url(r'^accounts/', include('registration.backends.simple.urls')),
                        url(r'^accounts/profile/', TemplateView.as_view(template_name='registration/profile.html'),
                            name='auth_profile'),
+                       url(r'^accounts/', include('accounts.urls')),
                        url(r'^places/', include('places.urls')),
                        url(r'^categories/', include('categories.urls')),
 )
