@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'registration',
     'braces',
     'accounts',
@@ -48,6 +49,7 @@ INSTALLED_APPS = (
 )
 
 REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

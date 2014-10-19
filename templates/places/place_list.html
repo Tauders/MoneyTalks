@@ -1,17 +1,20 @@
 {% extends 'base.html' %}
 
+{% block title %}Список мест{% endblock %}
+
 {% block content %}
   {{ block.super }}
+  <h2>Список мест</h2>
   {% if object_list %}
-    <ol>
+    <ul class="list-group col-md-5">
       {% for place in object_list %}
-        <li>
-          <a href="update/{{ place.pk }}/">{{ place }}</a> <a href="delete/{{ place.pk }}/">Удалить</a>
+        <li class="list-group-item">
+          <a class="btn btn-default" href="{% url 'place_update' place.pk %}">{{ place }}</a> <a class="btn btn-danger"
+                                                                                                 href="{% url 'place_delete' place.pk %}">Удалить</a>
         </li>
       {% endfor %}
-    </ol>
+    </ul>
   {% endif %}
-  <ul>
-    <li><a href="create/">Создать</a></li>
-  </ul>
+  <br>
+  <a class="btn btn-primary col-md-1" href="{% url 'place_create' %}">Создать</a>
 {% endblock content %}

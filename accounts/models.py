@@ -20,7 +20,7 @@ class Account(models.Model):
         return value
 
         # def clean(self):
-        #cleaned_data = super().clean()
+        # cleaned_data = super().clean()
         #if self.user.accounts.filter(name=self.name).exists():
         #raise ValidationError('Name must be unique')
         #return cleaned_data
