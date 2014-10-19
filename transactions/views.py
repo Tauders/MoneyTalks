@@ -2,7 +2,6 @@ from braces.views import LoginRequiredMixin
 from django.core.urlresolvers import reverse
 from django.views.generic import DeleteView, ListView, CreateView, UpdateView
 from django.views.generic.edit import ModelFormMixin
-from django.core.exceptions import ValidationError
 
 from transactions.forms import TransactionForm
 from transactions.models import Transaction

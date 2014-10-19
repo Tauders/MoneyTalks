@@ -6,7 +6,8 @@
     <ol>
       {% for transaction in object_list %}
         <li>
-          <a href="update/{{ transaction.pk }}/">{{ transaction }}</a> <a href="delete/{{ transaction.pk }}/">Удалить</a>
+          <a href="update/{{ transaction.pk }}/">{{ transaction }}</a> <a
+            href="delete/{{ transaction.pk }}/">Удалить</a>
         </li>
       {% endfor %}
     </ol>

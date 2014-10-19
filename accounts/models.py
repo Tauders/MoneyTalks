@@ -1,7 +1,6 @@
 from decimal import Decimal
 
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
 from django.db import models
 
 
@@ -20,8 +19,8 @@ class Account(models.Model):
             value += transaction.amount
         return value
 
-    #def clean(self):
+        # def clean(self):
         #cleaned_data = super().clean()
         #if self.user.accounts.filter(name=self.name).exists():
-            #raise ValidationError('Name must be unique')
+        #raise ValidationError('Name must be unique')
         #return cleaned_data

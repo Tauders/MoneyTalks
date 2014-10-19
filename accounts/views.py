@@ -3,7 +3,6 @@ from braces.views import LoginRequiredMixin
 from django.core.urlresolvers import reverse
 from django.views.generic import DeleteView, ListView, CreateView, UpdateView
 from django.views.generic.edit import ModelFormMixin
-from django.core.exceptions import ValidationError
 
 from accounts.forms import AccountForm
 from accounts.models import Account
