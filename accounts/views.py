@@ -24,6 +24,11 @@ class AccountMixin(LoginRequiredMixin):
         self.object.save()
         return super(ModelFormMixin, self).form_valid(form)
 
+    def get_form_kwargs(self):
+        kwargs = super(AccountMixin, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
 
 class AccountListView(AccountMixin, ListView):
     pass
