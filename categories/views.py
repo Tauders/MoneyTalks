@@ -13,7 +13,7 @@ class CategoryMixin(LoginRequiredMixin):
     form_class = CategoryForm
 
     def get_success_url(self):
-        return reverse('place_list')
+        return reverse('category_list')
 
     def get_queryset(self):
         return Category.objects.filter(user=self.request.user)
@@ -23,6 +23,11 @@ class CategoryMixin(LoginRequiredMixin):
         self.object.user = self.request.user
         self.object.save()
         return super(ModelFormMixin, self).form_valid(form)
+
+    def get_form_kwargs(self):
+        kwargs = super(CategoryMixin, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 
 class CategoryListView(CategoryMixin, ListView):
