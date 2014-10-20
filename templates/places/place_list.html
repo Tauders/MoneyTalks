@@ -9,12 +9,26 @@
     <ul class="list-group col-md-5">
       {% for place in object_list %}
         <li class="list-group-item">
-          <a class="btn btn-default" href="{% url 'place_update' place.pk %}">{{ place }}</a> <a class="btn btn-danger"
-                                                                                                 href="{% url 'place_delete' place.pk %}">Удалить</a>
+          <a class="btn btn-default" href="{% url 'place_update' place.pk %}">{{ place }}</a> <a
+            data-id="{{ place.pk }}" class="btn btn-danger" href="#">Удалить</a>
         </li>
       {% endfor %}
     </ul>
   {% endif %}
 
   <a class="btn btn-primary col-md-1" href="{% url 'place_create' %}">Создать</a>
+
+  <script type="text/javascript">
+    $(".btn-danger").on("click", function () {
+      var button = $(this);
+      var id = button.data("id");
+      if (confirm('Вы уверены, что хотите удалить это место?') == true) {
+        ajaxPost('/places/delete/', {'pk': id}, function (content) {
+          button.parent().hide();
+        })
+      } else {
+        return false;
+      }
+    });
+  </script>
 {% endblock content %}

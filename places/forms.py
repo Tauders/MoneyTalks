@@ -10,12 +10,6 @@ class PlaceForm(forms.ModelForm):
         model = Place
         exclude = ('user',)
 
-    name = forms.CharField(
-        label="Название места",
-        max_length=80,
-        required=True,
-    )
-
     def __init__(self, *args, **kwargs):
         super(PlaceForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
