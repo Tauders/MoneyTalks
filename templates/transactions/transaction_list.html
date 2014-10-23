@@ -3,16 +3,31 @@
 {% block content %}
   {{ block.super }}
   {% if object_list %}
-    <ol>
+    <ul class="list-group col-md-5">
       {% for transaction in object_list %}
-        <li>
-          <a href="update/{{ transaction.pk }}/">{{ transaction }}</a> <a
-            href="delete/{{ transaction.pk }}/">Удалить</a>
+        <li class="list-group-item">
+          <a class="btn btn-default" href="{% url 'transaction_update' transaction.pk %}">{{ transaction }}</a> <a
+            data-id="{{ transaction.pk }}" class="btn btn-danger" href="#">Удалить</a>
         </li>
       {% endfor %}
-    </ol>
+    </ul>
   {% endif %}
   <ul>
-    <li><a href="create/">Создать</a></li>
+    <a class="btn btn-primary col-md-1" href="{% url 'transaction_create' %}">Создать</a>
   </ul>
+
+    <script type="text/javascript">
+        $(".btn-danger").on("click", function () {
+            var button = $(this);
+            var id = button.data("id");
+            if (confirm('Вы уверены, что хотите удалить эту транзакцию?') == true) {
+                ajaxPost('{% url 'transaction_delete' %}', {'pk': id}, function (content) {
+                    button.parent().hide();
+                })
+            } else {
+                return false;
+            }
+        });
+    </script>
+
 {% endblock content %}

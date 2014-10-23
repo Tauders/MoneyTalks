@@ -1,7 +1,10 @@
+import json
 from braces.views import LoginRequiredMixin
 from django.core.urlresolvers import reverse
+from django.http import QueryDict, HttpResponse
 from django.views.generic import DeleteView, ListView, CreateView, UpdateView
 from django.views.generic.edit import ModelFormMixin
+from django_ajax.decorators import ajax
 
 from transactions.forms import TransactionForm
 from transactions.models import Transaction
@@ -32,8 +35,21 @@ class TransactionCreateView(TransactionMixin, CreateView):
     pass
 
 
-class TransactionDeleteView(TransactionMixin, DeleteView):
-    pass
+class TransactionDeleteView():
+    @ajax
+    def delete_transaction(request):
+        transaction = Transaction.objects.get(pk=int(QueryDict(request.body).get('pk')))
+        if transaction.user == request.user:
+            transaction.delete()
+            return HttpResponse(
+                json.dumps({'msg': 'Transaction was deleted.'}),
+                content_type="application/json"
+            )
+        else:
+            return HttpResponse(
+                json.dumps({"msg": "Transaction was not deleted"}),
+                content_type="application/json"
+            )
 
 
 class TransactionUpdateView(TransactionMixin, UpdateView):

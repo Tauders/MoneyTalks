@@ -3,7 +3,7 @@ from django.conf.urls import patterns, url
 from transactions.views import TransactionListView, TransactionCreateView, TransactionUpdateView, TransactionDeleteView
 
 
-urlpatterns = patterns('',
+urlpatterns = patterns('transactions.views',
                        url(
                            regex=r'^$',
                            view=TransactionListView.as_view(),
@@ -15,8 +15,8 @@ urlpatterns = patterns('',
                            name='transaction_create'
                        ),
                        url(
-                           regex=r'^delete/(?P<pk>\d+)/$',
-                           view=TransactionDeleteView.as_view(),
+                           regex=r'^delete/$',
+                           view=TransactionDeleteView.delete_transaction,
                            name='transaction_delete'
                        ),
                        url(
