@@ -1,3 +1,9 @@
 ﻿body {
     padding-top: 70px;
 }
+.action-width{
+    width: 200px;
+}
+.counter-width{
+    width: 30px;
+}

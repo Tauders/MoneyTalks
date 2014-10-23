@@ -17,9 +17,9 @@
       <tbody>
       {% for place in object_list %}
         <tr>
-          <td>{{ forloop.counter }}</td>
+          <td class="counter-width">{{ forloop.counter }}</td>
           <td>{{ place }}</td>
-          <td>
+          <td class="action-width">
             <a href="{% url 'place_update' place.pk %}" class="btn btn-default">Изменить</a>
             <a data-id="{{ place.pk }}" class="btn btn-danger" href="#">Удалить</a>
           </td>
