@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
 {% block content %}
-  <form action="." method="POST">
-    {{ form }}
-    {% csrf_token %}
-    <br><input type="submit" value="Далее"/>
-  </form>
+  <h2>Редактирование транзакций</h2>
+  <br>
+  {% crispy form %}
 {% endblock content %}
+
