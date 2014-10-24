@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_ajax',
+    'endless_pagination',
     'crispy_forms',
     'registration',
     'braces',
@@ -102,4 +103,8 @@ STATICFILES_DIRS = (
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
+)
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'django.core.context_processors.request',
 )
