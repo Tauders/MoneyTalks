@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block title %}Редактирование места{% endblock %}
+{% block title %}{% trans "Редактирование места" %}{% endblock %}
 
 {% block content %}
-  <h2>Редактирование места</h2>
+  <h2>{% trans "Редактирование места" %}</h2>
   <br>
   {% crispy form %}
 {% endblock content %}

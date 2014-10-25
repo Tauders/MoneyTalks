@@ -52,9 +52,11 @@ INSTALLED_APPS = (
 
 REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
+LOGIN_REDIRECT_URL = '/'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -81,7 +83,12 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
+
+LANGUAGES = (
+    ('ru', 'Russian'),
+    ('en', 'English'),
+)
 
 TIME_ZONE = 'UTC'
 
@@ -105,6 +112,7 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
 )
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
 TEMPLATE_CONTEXT_PROCESSORS += (
     'django.core.context_processors.request',
 )

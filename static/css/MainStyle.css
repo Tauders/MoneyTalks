@@ -10,3 +10,12 @@
 .page-center{
     text-align: center;
 }
+.form-margin{
+    margin-left: 10px;
+}
+.login-submit{
+    margin-left: 35%;
+}
+.register-submit{
+    margin-left: 17%;
+}

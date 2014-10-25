@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
-{% block title %}Список мест{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Список мест" %}{% endblock %}
 
 {% block content %}
   {{ block.super }}
@@ -8,8 +8,8 @@
   <script>$(document).ready(function () {
     $.endlessPaginate();
   });</script>
-  <h2>Список мест</h2>
-  <a class="btn btn-primary " href="{% url 'place_create' %}">Создать</a>
+  <h2>{% trans "Список мест" %}</h2>
+  <a class="btn btn-primary " href="{% url 'place_create' %}">{% trans "Создать" %}</a>
   {% if object_list %}
     <div class="endless_page_template">
       {% include page_template %}
