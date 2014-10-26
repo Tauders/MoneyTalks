@@ -6,29 +6,35 @@ from django.utils import timezone
 from accounts.models import Account
 from categories.models import Category
 from places.models import Place
+from django.utils.translation import ugettext_lazy as _
 
 
 class Transaction(models.Model):
     account_from = models.ForeignKey(
         Account, null=True, blank=True,
-        related_name='transactions_from'
+        related_name='transactions_from',
+        verbose_name=_('Со счёта')
     )
     account_to = models.ForeignKey(
         Account, null=True, blank=True,
-        related_name='transactions_to'
+        related_name='transactions_to',
+        verbose_name=_('На счёт')
     )
-    user = models.ForeignKey(User, null=True, blank=True)
-    place = models.ForeignKey(Place, null=True, blank=True)
-    category = models.ForeignKey(Category, null=True, blank=True)
+    user = models.ForeignKey(User, null=True, blank=True, verbose_name=_('Пользователь'))
+    place = models.ForeignKey(Place, null=True, blank=True, verbose_name=_('Место'))
+    category = models.ForeignKey(Category, null=True, blank=True, verbose_name=_('Категория'))
     amount = models.DecimalField(
         max_digits=10,
         decimal_places=2,
+        verbose_name=_('Сумма')
     )
     datetime = models.DateTimeField(
-        default=timezone.now
+        default=timezone.now,
+        verbose_name=_('Дата')
     )
     comments = models.TextField(
-        blank=True
+        blank=True,
+        verbose_name=_('Комментарий')
     )
 
     def __str__(self):
