@@ -4,10 +4,11 @@
 {% block title %}{% trans "Log in" %}{% endblock %}
 
 {% block content %}
-  <div class="jumbotron col-md-7">
-    {% crispy form %}
-  </div>
-  <div class="jumbotron col-md-4 form-margin">
-    <p>{% trans "Не зарегистрированы?" %} <a href="{% url 'registration_register' %}">{% trans "Регистрация" %}</a>.</p>
-  </div>
+    <div class="jumbotron col-md-7">
+        {% crispy form %}
+    </div>
+    <div class="jumbotron col-md-4 form-margin">
+        <p>{% trans "Не зарегистрированы?" %} <a href="{% url 'registration_register' %}">{% trans "Регистрация" %}</a>.
+        </p>
+    </div>
 {% endblock %}

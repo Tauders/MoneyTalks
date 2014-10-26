@@ -1,21 +1,27 @@
 ﻿body {
     padding-top: 70px;
 }
-.action-width{
+
+.action-width {
     width: 200px;
 }
-.counter-width{
+
+.counter-width {
     width: 30px;
 }
-.page-center{
+
+.page-center {
     text-align: center;
 }
-.form-margin{
+
+.form-margin {
     margin-left: 10px;
 }
-.login-submit{
+
+.login-submit {
     margin-left: 35%;
 }
-.register-submit{
+
+.register-submit {
     margin-left: 17%;
 }

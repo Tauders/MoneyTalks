@@ -3,17 +3,17 @@
 {% block title %}{% trans "Список мест" %}{% endblock %}
 
 {% block content %}
-  {{ block.super }}
-  <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
-  <script>$(document).ready(function () {
-    $.endlessPaginate();
-  });</script>
-  <h2>{% trans "Список мест" %}</h2>
-  <a class="btn btn-primary " href="{% url 'place_create' %}">{% trans "Создать" %}</a>
-  {% if object_list %}
-    <div class="endless_page_template">
-      {% include page_template %}
-    </div>
-    <br>
-  {% endif %}
+    {{ block.super }}
+    <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+    <script>$(document).ready(function () {
+        $.endlessPaginate();
+    });</script>
+    <h2>{% trans "Список мест" %}</h2>
+    <a class="btn btn-primary " href="{% url 'place_create' %}">{% trans "Создать" %}</a>
+    {% if object_list %}
+        <div class="endless_page_template">
+            {% include page_template %}
+        </div>
+        <br>
+    {% endif %}
 {% endblock content %}

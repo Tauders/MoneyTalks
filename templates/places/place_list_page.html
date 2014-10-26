@@ -4,57 +4,58 @@
 {% get_pages %}
 
 <table class="table table-hover">
-  <thead>
-  <tr>
-    <th>#</th>
-    <th>{% trans "Название" %}</th>
-    <th>{% trans "Действия" %}</th>
-  </tr>
-  </thead>
-  <tbody>
-  {% for place in object_list %}
+    <thead>
     <tr>
-      <td class="counter-width">{{ forloop.counter }}</td>
-      <td>{{ place }}</td>
-      <td class="action-width">
-        <a href="{% url 'place_update' place.pk %}" class="btn btn-default">{% trans "Изменить" %}</a>
-        <a data-id="{{ place.pk }}" class="btn btn-danger" href="#">{% trans "Удалить" %}</a>
-      </td>
+        <th>#</th>
+        <th>{% trans "Название" %}</th>
+        <th>{% trans "Действия" %}</th>
     </tr>
-  {% endfor %}
-  </tbody>
+    </thead>
+    <tbody>
+    {% for place in object_list %}
+        <tr>
+            <td class="counter-width">{{ forloop.counter }}</td>
+            <td>{{ place }}</td>
+            <td class="action-width">
+                <a href="{% url 'place_update' place.pk %}" class="btn btn-default">{% trans "Изменить" %}</a>
+                <a data-id="{{ place.pk }}" class="btn btn-danger" href="#">{% trans "Удалить" %}</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
 </table>
 
 <div class="page-center">
-{% trans "Показаны записи" %} {{ pages.current_start_index }} - {{ pages.current_end_index }} {% trans "из" %} {{ pages.total_count }}.
-<br>
-  <ul class="pagination">
-    {% if pages.previous %}
-      <li>{{ pages.previous }}</li>
-    {% endif %}
-    {% for page in pages %}
-      {% if  page.is_current %}
-        <li class="active">{{ page }}</li>
-      {% else %}
-        <li>{{ page }}</li>
-      {% endif %}
-    {% endfor %}
-    {% if pages.next %}
-      <li>{{ pages.next }}</li>
-    {% endif %}
-  </ul>
+    {% trans "Показаны записи" %} {{ pages.current_start_index }}
+    - {{ pages.current_end_index }} {% trans "из" %} {{ pages.total_count }}.
+    <br>
+    <ul class="pagination">
+        {% if pages.previous %}
+            <li>{{ pages.previous }}</li>
+        {% endif %}
+        {% for page in pages %}
+            {% if  page.is_current %}
+                <li class="active">{{ page }}</li>
+            {% else %}
+                <li>{{ page }}</li>
+            {% endif %}
+        {% endfor %}
+        {% if pages.next %}
+            <li>{{ pages.next }}</li>
+        {% endif %}
+    </ul>
 </div>
 
-  <script type="text/javascript">
+<script type="text/javascript">
     $(".btn-danger").on("click", function () {
-      var button = $(this);
-      var id = button.data("id");
-      if (confirm('{% trans "Вы уверены, что хотите удалить это место?" %}') == true) {
-        ajaxPost('{% url 'place_delete' %}', {'pk': id}, function (content) {
-          button.parent().parent().hide();
-        })
-      } else {
-        return false;
-      }
+        var button = $(this);
+        var id = button.data("id");
+        if (confirm('{% trans "Вы уверены, что хотите удалить это место?" %}') == true) {
+            ajaxPost('{% url 'place_delete' %}', {'pk': id}, function (content) {
+                button.parent().parent().hide();
+            })
+        } else {
+            return false;
+        }
     });
-  </script>
+</script>

@@ -1,4 +1,5 @@
 from registration.backends.simple.views import RegistrationView
+
 from moneytalks.forms import MyRegistrationForm
 
 

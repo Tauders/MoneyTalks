@@ -2,11 +2,11 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import ugettext_lazy as _
 
 from accounts.models import Account
 from categories.models import Category
 from places.models import Place
-from django.utils.translation import ugettext_lazy as _
 
 
 class Transaction(models.Model):
@@ -49,6 +49,6 @@ class Transaction(models.Model):
         cleaned_data = super().clean()
         if self.account_from == self.account_to:
             raise ValidationError(
-                'Accounts must be different'
+                _('Счета должны быть разные')
             )
         return cleaned_data

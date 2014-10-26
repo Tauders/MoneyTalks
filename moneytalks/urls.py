@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_views
+
 from moneytalks.forms import MyLoginForm, MyPasswordChangeForm
 from moneytalks.views import MyRegistration
 
@@ -36,6 +37,6 @@ urlpatterns = patterns('',
                        url(r'^password/change/$',
                            auth_views.password_change,
                            {'post_change_redirect': reverse_lazy('auth_password_change_done'),
-                           'password_change_form': MyPasswordChangeForm},
+                            'password_change_form': MyPasswordChangeForm},
                            name='auth_password_change'),
 )
