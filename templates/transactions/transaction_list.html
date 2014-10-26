@@ -1,33 +1,19 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Список мест" %}{% endblock %}
 
 {% block content %}
   {{ block.super }}
+  <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+  <script>$(document).ready(function () {
+    $.endlessPaginate();
+  });</script>
+  <h2>{% trans "Список мест" %}</h2>
+  <a class="btn btn-primary " href="{% url 'transaction_create' %}">{% trans "Создать" %}</a>
   {% if object_list %}
-    <ul class="list-group col-md-5">
-      {% for transaction in object_list %}
-        <li class="list-group-item">
-          <a class="btn btn-default" href="{% url 'transaction_update' transaction.pk %}">{{ transaction }}</a> <a
-            data-id="{{ transaction.pk }}" class="btn btn-danger" href="#">Удалить</a>
-        </li>
-      {% endfor %}
-    </ul>
+    <div class="endless_page_template">
+      {% include page_template %}
+    </div>
+    <br>
   {% endif %}
-  <ul>
-    <a class="btn btn-primary col-md-1" href="{% url 'transaction_create' %}">Создать</a>
-  </ul>
-
-    <script type="text/javascript">
-        $(".btn-danger").on("click", function () {
-            var button = $(this);
-            var id = button.data("id");
-            if (confirm('Вы уверены, что хотите удалить эту транзакцию?') == true) {
-                ajaxPost('{% url 'transaction_delete' %}', {'pk': id}, function (content) {
-                    button.parent().hide();
-                })
-            } else {
-                return false;
-            }
-        });
-    </script>
-
 {% endblock content %}

@@ -1,6 +1,5 @@
 # Create your views here.
 import json
-
 from braces.views import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse

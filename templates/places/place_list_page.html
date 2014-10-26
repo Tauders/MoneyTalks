@@ -26,7 +26,7 @@
 </table>
 
 <div class="page-center">
-{% trans "Показаны записи" %} {{ pages.current_start_index }}-{{ pages.current_end_index }} {% trans "из" %} {{ pages.total_count }}.
+{% trans "Показаны записи" %} {{ pages.current_start_index }} - {{ pages.current_end_index }} {% trans "из" %} {{ pages.total_count }}.
 <br>
   <ul class="pagination">
     {% if pages.previous %}
