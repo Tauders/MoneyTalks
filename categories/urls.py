@@ -24,5 +24,5 @@ urlpatterns = patterns('',
                            regex=r'^update/(?P<pk>\d+)/$',
                            view=CategoryUpdateView.as_view(),
                            name='category_update'
-                       ),
+                       )
 )

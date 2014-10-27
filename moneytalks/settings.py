@@ -47,7 +47,7 @@ INSTALLED_APPS = (
     'accounts',
     'categories',
     'places',
-    'transactions',
+    'transactions'
 )
 
 REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.

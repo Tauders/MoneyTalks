@@ -5,13 +5,13 @@
     {% if object_list %}
         <ol>
             {% for category in object_list %}
-                <li>
-                    <a href="update/{{ category.pk }}/">{{ category }}</a> <a
-                        href="delete/{{ category.pk }}/">Удалить</a>
-                </li>
-            {% endfor %}
-        </ol>
-    {% endif %}
+               <li>
+                   <a href="update/{{ category.pk }}/">{{ category }}</a>
+                   <a href="delete/{{ category.pk }}/">Удалить</a>
+               </li>
+           {% endfor %}
+       </ol>
+   {% endif %}
     <ul>
         <li><a href="create/">Создать</a></li>
     </ul>
