@@ -33,8 +33,8 @@ class CategoryMixin(LoginRequiredMixin):
 
     def show_categories(request):
         return render_to_response("category_list.html",
-            {'nodes': Category.objects.all()},
-            context_instance = RequestContext(request))
+                                  {'nodes': Category.objects.all()},
+                                  context_instance=RequestContext(request))
 
 
 class CategoryListView(CategoryMixin, ListView):

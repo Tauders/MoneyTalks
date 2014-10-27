@@ -38,5 +38,4 @@ urlpatterns = patterns('',
                            auth_views.password_change,
                            {'post_change_redirect': reverse_lazy('auth_password_change_done'),
                             'password_change_form': MyPasswordChangeForm},
-                           name='auth_password_change'),
-)
+                           name='auth_password_change'),)

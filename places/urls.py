@@ -23,5 +23,4 @@ urlpatterns = patterns('places.views',
                            regex=r'^update/(?P<pk>\d+)/$',
                            view=PlaceUpdateView.as_view(),
                            name='place_update'
-                       ),
-)
+                       ),)

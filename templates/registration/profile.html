@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans "Детали профиля" %}{% endblock %}
 {% block content %}
-    {% trans "Ваш ник" %} - {{ user.username }}<br>
-    {% trans "Ваш email" %} - {{ user.email }}<br>
-    {% trans "Сменить пароль" %} - <a href="{% url 'auth_password_change' %}">{% trans "Сменить" %}</a>
+  {% trans "Ваш ник" %} - {{ user.username }}<br>
+  {% trans "Ваш email" %} - {{ user.email }}<br>
+  {% trans "Сменить пароль" %} - <a href="{% url 'auth_password_change' %}">{% trans "Сменить" %}</a>
 {% endblock %}

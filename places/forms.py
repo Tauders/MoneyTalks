@@ -22,11 +22,3 @@ class PlaceForm(forms.ModelForm):
         self.helper.field_class = 'col-lg-7'
 
         self.helper.add_input(Submit('submit', _('Создать'), css_class="register-submit"))
-
-
-
-
-
-
-
-

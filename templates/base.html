@@ -4,60 +4,60 @@
 {% load staticfiles %}
 <head lang="en">
 
-    <meta charset="UTF-8">
-    <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
-    <script src="{% static "js/bootstrap.js" %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "css/MainStyle.css" %}">
-    <script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax.min.js' %}"></script>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{% trans "Заголовок." %}{% endblock %}</title>
+  <meta charset="UTF-8">
+  <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+  <script src="{% static "js/bootstrap.js" %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+  <link rel="stylesheet" type="text/css" href="{% static "css/MainStyle.css" %}">
+  <script type="text/javascript" src="{% static 'django_ajax/js/jquery.ajax.min.js' %}"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% trans "Заголовок." %}{% endblock %}</title>
 </head>
 
 <body>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">{% trans "Переключить навигацию." %}</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Money Talks</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">{% trans "Главная" %}</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'transaction_list' %}">{% trans "Транзакции" %}</a></li>
-                    <li><a href="{% url 'place_list' %}">{% trans "Места" %}</a></li>
-                    <li><a href="{% url 'category_list' %}">{% trans "Категории" %}</a></li>
-                    <li><a href="{% url 'account_list' %}">{% trans "Счета" %}</a></li>
-                    {% if user.is_superuser %}
-                        <li><a href="/admin">{% trans "Админка" %}</a></li>
-                    {% endif %}
-                {% endif %}
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
-                    <p class="navbar-text">{% trans "Вы вошли как" %}</p>
-                    <li><a href="{% url 'auth_profile' %}">{{ user.username }}</a></li>
-                    <li><a href="{% url 'auth_logout' %}">{% trans "Выйти" %}</a></li>
-                {% else %}
-                    <li><a href="{% url 'registration_register' %}">{% trans "Регистрация" %}</a></li>
-                    <li><a href="{% url 'auth_login' %}">{% trans "Вход" %}</a></li>
-                {% endif %}
-            </ul>
-        </div>
-        <!--/.nav-collapse-->
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">{% trans "Переключить навигацию." %}</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Money Talks</a>
     </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/">{% trans "Главная" %}</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'transaction_list' %}">{% trans "Транзакции" %}</a></li>
+          <li><a href="{% url 'place_list' %}">{% trans "Места" %}</a></li>
+          <li><a href="{% url 'category_list' %}">{% trans "Категории" %}</a></li>
+          <li><a href="{% url 'account_list' %}">{% trans "Счета" %}</a></li>
+          {% if user.is_superuser %}
+            <li><a href="/admin">{% trans "Админка" %}</a></li>
+          {% endif %}
+        {% endif %}
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+          <p class="navbar-text">{% trans "Вы вошли как" %}</p>
+          <li><a href="{% url 'auth_profile' %}">{{ user.username }}</a></li>
+          <li><a href="{% url 'auth_logout' %}">{% trans "Выйти" %}</a></li>
+        {% else %}
+          <li><a href="{% url 'registration_register' %}">{% trans "Регистрация" %}</a></li>
+          <li><a href="{% url 'auth_login' %}">{% trans "Вход" %}</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    <!--/.nav-collapse-->
+  </div>
 </div>
 
 
 <div class="container ">
-    {% block content %}{% endblock %}
+  {% block content %}{% endblock %}
 </div>
 <!-- /.container -->
 

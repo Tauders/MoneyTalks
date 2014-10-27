@@ -22,4 +22,3 @@ class TransactionTest(TestCase):
             amount=amount,
         )
         self.assertAlmostEqual(account.balance(), amount, 2)
-
