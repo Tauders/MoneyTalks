@@ -12,4 +12,5 @@ class CategoryForm(ModelForm):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
-        self.fields['parent'] = forms.ModelChoiceField(queryset=Category.objects.filter(user=user))
+        self.instance.user = user
+        self.fields['parent'] = forms.ModelChoiceField(queryset=Category.objects.filter(user=user), required=False)
