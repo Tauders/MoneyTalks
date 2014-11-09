@@ -23,4 +23,4 @@ urlpatterns = patterns('transactions.views',
                            regex=r'^update/(?P<pk>\d+)/$',
                            view=TransactionUpdateView.as_view(),
                            name='transaction_update'
-                       ),)
+                       ), )

@@ -2,7 +2,6 @@
 from braces.views import LoginRequiredMixin
 from django.core.urlresolvers import reverse
 from django.views.generic import DeleteView, ListView, CreateView, UpdateView
-from django.views.generic.edit import ModelFormMixin
 
 from accounts.forms import AccountForm
 from accounts.models import Account
@@ -17,12 +16,6 @@ class AccountMixin(LoginRequiredMixin):
 
     def get_queryset(self):
         return Account.objects.filter(user=self.request.user)
-
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        self.object.save()
-        return super(ModelFormMixin, self).form_valid(form)
 
     def get_form_kwargs(self):
         kwargs = super(AccountMixin, self).get_form_kwargs()

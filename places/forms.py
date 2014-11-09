@@ -12,6 +12,7 @@ class PlaceForm(forms.ModelForm):
         exclude = ('user',)
 
     def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user')
         super(PlaceForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_id = 'place-formId'
@@ -20,5 +21,6 @@ class PlaceForm(forms.ModelForm):
         self.helper.form_action = '.'
         self.helper.label_class = 'col-lg-2'
         self.helper.field_class = 'col-lg-7'
+        self.instance.user = user
 
         self.helper.add_input(Submit('submit', _('Создать'), css_class="register-submit"))

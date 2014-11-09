@@ -23,11 +23,10 @@ class PlaceMixin(LoginRequiredMixin):
     def get_queryset(self):
         return Place.objects.filter(user=self.request.user)
 
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        self.object.save()
-        return super(LoginRequiredMixin, self).form_valid(form)
+    def get_form_kwargs(self):
+        kwargs = super(PlaceMixin, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 
 class PlaceListView(PlaceMixin, AjaxListView):
