@@ -30,7 +30,16 @@ class TransactionMixin(LoginRequiredMixin):
 
 
 class TransactionListView(TransactionMixin, AjaxListView):
-    pass
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        type_ = self.request.GET.get('type')
+        if type_ == 'incoming':
+            queryset = queryset.filter(account_from=None)
+        elif type_ == 'outgoing':
+            queryset = queryset.filter(account_to=None)
+        elif type_ == 'transfer':
+            queryset = queryset.filter(account_to__isnull=False, account_from__isnull=False)
+        return queryset
 
 
 class TransactionCreateView(TransactionMixin, CreateView):
