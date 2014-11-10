@@ -3,16 +3,9 @@
 {% block content %}
   {{ block.super }}
   {% if object_list %}
-    <ol>
-      {% for category in object_list %}
-        <li>
-          <a href="update/{{ category.pk }}/">{{ category }}</a>
-          <a href="delete/{{ category.pk }}/">Удалить</a>
-        </li>
-      {% endfor %}
-    </ol>
+    {% include 'categories/_category_tree.html' with category_list=object_list %}
   {% endif %}
   <ul>
-    <li><a href="create/">Создать</a></li>
+    <li><a href="{% url 'category_create' %}">Создать</a></li>
   </ul>
 {% endblock content %}

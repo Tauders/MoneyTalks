@@ -1,0 +1,9 @@
+<ol>
+  {% for category in category_list %}
+  <li>
+    <a href="update/{{ category.pk }}/">{{ category }}</a>
+    <a href="delete/{{ category.pk }}/">Удалить</a>
+    {% include 'categories/_category_tree.html' with category_list=category.children.all %}
+  </li>
+  {% endfor %}
+</ol>

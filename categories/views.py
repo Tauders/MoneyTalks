@@ -38,7 +38,8 @@ class CategoryMixin(LoginRequiredMixin):
 
 
 class CategoryListView(CategoryMixin, ListView):
-    pass
+    def get_queryset(self):
+        return Category.objects.filter(user=self.request.user, parent=None)
 
 
 class CategoryCreateView(CategoryMixin, CreateView):
