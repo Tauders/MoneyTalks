@@ -1,4 +1,5 @@
 # Create your tests here.
+from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.test import TestCase
 from places.models import Place
@@ -11,15 +12,8 @@ class TransactionTest(TestCase):
         user = get_user_model().objects.create(
             username='test',
         )
-        account1 = Account.objects.create(
-            name='test1',
-            user=user,
-        )
-        account2 = Account.objects.create(
-            name='test1',
-            user=user,
-        )
-        account1.save()
-        account2.save()
-        user.save()
-        self.assertEqual(account1.name, account2.name)
+        #Transaction.objects.create(account_from='test', account_to='test', user=user)
+        acc = Account(name='qwe', user=user)
+        acc.save()
+        trans2 = Transaction(account_from=acc, account_to=acc, user=user)
+        self.assertRaisesMessage(ValidationError, 'Счета должны быть разные', trans2.clean)
