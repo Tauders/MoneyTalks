@@ -5,7 +5,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=80)
-    parent = models.ForeignKey('self', null=True, blank=True, related_name='parent')
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='children')
     user = models.ForeignKey(User, related_name='categories')
 
     class Meta:
