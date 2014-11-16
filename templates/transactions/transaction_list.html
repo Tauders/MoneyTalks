@@ -11,7 +11,7 @@
   <h2>{% trans "Список транзакций" %}</h2>
   <a class="btn btn-primary " href="{% url 'transaction_create' %}">{% trans "Создать" %}</a>
   <a class="btn btn-primary " href="?type=">Всё</a>
-  <a class="btn btn-primary " href="?type=transfer">туда сюда</a>
+  <a class="btn btn-primary " href="?type=transfer">Перевод</a>
   <a class="btn btn-primary " href="?type=incoming">Доход</a>
   <a class="btn btn-primary " href="?type=outgoing">Расход</a>
   {% if object_list %}

@@ -39,7 +39,7 @@ class Transaction(models.Model):
 
     def __str__(self):
         return '{}: {}, from {} to {}'.format(
-            self.datetime,
+            self.datetime.strftime("%d.%m.%y %H:%M"),
             self.amount,
             self.account_from,
             self.account_to,
