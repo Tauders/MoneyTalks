@@ -15,8 +15,8 @@ urlpatterns = patterns('',
                            name='account_create'
                        ),
                        url(
-                           regex=r'^delete/(?P<pk>\d+)/$',
-                           view=AccountDeleteView.as_view(),
+                           regex=r'^delete/$',
+                           view=AccountDeleteView.delete_account,
                            name='account_delete'
                        ),
                        url(

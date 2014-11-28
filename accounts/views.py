@@ -1,7 +1,12 @@
 # Create your views here.
+import json
 from braces.views import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
+from django.http import QueryDict, HttpResponse
 from django.views.generic import DeleteView, ListView, CreateView, UpdateView
+from django_ajax.decorators import ajax
+from endless_pagination.views import AjaxListView
 
 from accounts.forms import AccountForm
 from accounts.models import Account
@@ -23,7 +28,7 @@ class AccountMixin(LoginRequiredMixin):
         return kwargs
 
 
-class AccountListView(AccountMixin, ListView):
+class AccountListView(AccountMixin, AjaxListView):
     pass
 
 
@@ -31,8 +36,22 @@ class AccountCreateView(AccountMixin, CreateView):
     pass
 
 
-class AccountDeleteView(AccountMixin, DeleteView):
-    pass
+class AccountDeleteView():
+    @login_required
+    @ajax
+    def delete_account(request):
+        place = Account.objects.get(pk=int(QueryDict(request.body).get('pk')))
+        if place.user == request.user:
+            place.delete()
+            return HttpResponse(
+                json.dumps({'msg': 'Account was deleted.'}),
+                content_type="application/json"
+            )
+        else:
+            return HttpResponse(
+                json.dumps({"msg": "Account was not deleted."}),
+                content_type="application/json"
+            )
 
 
 class AccountUpdateView(AccountMixin, UpdateView):

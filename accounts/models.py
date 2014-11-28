@@ -1,12 +1,12 @@
 from decimal import Decimal
-
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
 
 class Account(models.Model):
-    name = models.CharField(max_length=80)
+    name = models.CharField(max_length=80, verbose_name=_('Название счёта'))
     user = models.ForeignKey(User, related_name='accounts')
 
     def __str__(self):
@@ -23,5 +23,5 @@ class Account(models.Model):
     def clean(self):
         cleaned_data = super().clean()
         if self.user.accounts.filter(name=self.name).exists():
-            raise ValidationError('Name must be unique')
+            raise ValidationError(_('Название должно быть уникальным'))
         return cleaned_data
