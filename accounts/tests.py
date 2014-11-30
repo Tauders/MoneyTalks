@@ -7,7 +7,7 @@ from accounts.models import Account
 from transactions.models import Transaction
 
 
-class TransactionTest(TestCase):
+class AccountTest(TestCase):
     def test_balance(self):
         amount = Decimal(1.23)
         user = get_user_model().objects.create(

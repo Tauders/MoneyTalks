@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Список счетов" %}{% endblock %}
 
 {% block content %}
-  {{ block.super }}
+ {{ block.super }}
+  <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+  <script>$(document).ready(function () {
+    $.endlessPaginate();
+  });</script>
+  <h2>{% trans "Список счетов" %}</h2>
+  <a class="btn btn-primary " href="{% url 'account_create' %}">{% trans "Создать" %}</a>
   {% if object_list %}
-    <ol>
-      {% for place in object_list %}
-        <li>
-          <a href="update/{{ place.pk }}/">{{ place }}</a> <a href="delete/{{ place.pk }}/">Удалить</a>
-        </li>
-      {% endfor %}
-    </ol>
+    <div class="endless_page_template">
+      {% include page_template %}
+    </div>
+    <br>
   {% endif %}
-  <ul>
-    <li><a href="create/">Создать</a></li>
-  </ul>
 {% endblock content %}

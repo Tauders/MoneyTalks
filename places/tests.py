@@ -16,5 +16,3 @@ class PlaceTest(TestCase):
             p = Place.objects.create(
                 name='test',
             )
-            p.save()
-
