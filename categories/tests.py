@@ -30,13 +30,3 @@ class CategoryTest(TestCase):
         Category.objects.create(name='child', user=user, parent=parent)
         child = Category(name='child', user=user, parent=parent)
         self.assertRaisesMessage(ValidationError, 'Name must be unique', child.clean)
-
-        def test_trycategorynamethesameparent(self):
-            user = get_user_model().objects.create(
-                username='test',
-            )
-            parent = Category(name='parent', user=user, parent=None)
-            Category.objects.create(name='child', user=user, parent=parent)
-            child = Category(name='child', user=user, parent=parent)
-            self.assertRaisesMessage(ValidationError, 'Name must be unique', child.clean)
-
