@@ -22,11 +22,11 @@ class TransactionMixin(LoginRequiredMixin):
     def get_queryset(self):
         return Transaction.objects.filter(user=self.request.user)
 
-    #def form_valid(self, form):
-        #self.object = form.save(commit=False)
-        #self.object.user = self.request.user
-        #self.object.save()
-        #return super(LoginRequiredMixin, self).form_valid(form)
+        # def form_valid(self, form):
+        # self.object = form.save(commit=False)
+        # self.object.user = self.request.user
+        # self.object.save()
+        # return super(LoginRequiredMixin, self).form_valid(form)
 
     def get_form_kwargs(self):
         kwargs = super(TransactionMixin, self).get_form_kwargs()

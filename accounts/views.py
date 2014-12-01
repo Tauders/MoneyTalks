@@ -1,10 +1,11 @@
 # Create your views here.
 import json
+
 from braces.views import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import QueryDict, HttpResponse
-from django.views.generic import DeleteView, ListView, CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView
 from django_ajax.decorators import ajax
 from endless_pagination.views import AjaxListView
 

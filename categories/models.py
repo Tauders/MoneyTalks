@@ -16,7 +16,7 @@ class Category(models.Model):
 
     def clean(self):
         clean_data = super().clean()
-        if self.user.categories.filter(name=self.name, parent=self.parent).exists():
+        categories = self.user.categories.filter(name=self.name, parent=self.parent)
+        if categories.exists():
             raise ValidationError('Name must be unique')
         return clean_data
-

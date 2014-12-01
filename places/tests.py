@@ -13,6 +13,6 @@ class PlaceTest(TestCase):
 
     def test_place_without_user(self):
         with self.assertRaises(IntegrityError):
-            p = Place.objects.create(
+            Place.objects.create(
                 name='test',
             )
