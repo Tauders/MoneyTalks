@@ -19,4 +19,3 @@ class Category(models.Model):
         if self.user.categories.filter(name=self.name, parent=self.parent).exists():
             raise ValidationError('Name must be unique')
         return clean_data
-

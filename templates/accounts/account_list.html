@@ -3,7 +3,7 @@
 {% block title %}{% trans "Список счетов" %}{% endblock %}
 
 {% block content %}
- {{ block.super }}
+  {{ block.super }}
   <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
   <script>$(document).ready(function () {
     $.endlessPaginate();
