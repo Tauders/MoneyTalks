@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
 
+{% block title %} {% trans "Редактирование категории" %} {% endblock %}
 {% block content %}
-  <form action="." method="POST">
-    {{ form }}
-    {% csrf_token %}
-    <br><input type="submit" value="Далее"/>
-  </form>
+  <h2>{% trans "Редактирование категории" %}</h2>
+  <br>
+  {% crispy form %}
+{#  <form action="." method="POST">#}
+{#    {{ form }}#}
+{#    {% csrf_token %}#}
+{#    <br><input type="submit" value="Далее"/>#}
+{#  </form>#}
 {% endblock content %}
