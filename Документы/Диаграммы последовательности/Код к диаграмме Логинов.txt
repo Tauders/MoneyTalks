@@ -1,0 +1,22 @@
+places/forms
+
+def __init__(self, args, *kwargs):
+        user = kwargs.pop('user')
+        super(PlaceForm, self).__init__(*args, **kwargs)
+        self.helper.add_input(Submit('submit', _('Создать'), css_class="register-submit"))
+
+>>>
+
+    def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None,
+                 initial=None, error_class=ErrorList, label_suffix=None,
+                 empty_permitted=False, instance=None):
+        opts = self._meta
+        self.instance = instance
+        object_data = model_to_dict(instance, opts.fields, opts.exclude)
+        object_data.update(initial)
+        super(BaseModelForm, self).__init__(data, files, auto_id, prefix, object_data,
+                                            error_class, label_suffix, empty_permitted)
+        for field_name in self.fields:
+            formfield = self.fields[field_name]
+	    limit_choices_to = formfield.limit_choices_to
+            formfield.queryset = formfield.queryset.complex_filter(limit_choices_to)
