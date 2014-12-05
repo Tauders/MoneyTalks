@@ -16,14 +16,15 @@ class CategoryForm(ModelForm):
         user = kwargs.pop('user')
         super().__init__(*args, **kwargs)
         self.instance.user = user
-        self.fields['parent'] = forms.ModelChoiceField(queryset=Category.objects.filter(user=user), required=False)
+        self.fields['parent'] = forms.ModelChoiceField(queryset=Category.objects.filter(user=user), required=False,
+                                                       label=_('Потомки'))
         self.helper = FormHelper()
-        self.helper.form_id = 'place-formId'
+        self.helper.form_id = 'category-formId'
         self.helper.form_class = 'form-horizontal'
         self.helper.form_method = 'post'
         self.helper.form_action = '.'
         self.helper.label_class = 'col-lg-2'
         self.helper.field_class = 'col-lg-7'
         self.instance.user = user
-        self.helper.add_input(Submit('submit', ('Создать'), css_class="register-submit"))
+        self.helper.add_input(Submit('submit', _('Создать'), css_class="register-submit"))
 

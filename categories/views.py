@@ -37,10 +37,10 @@ class CategoryCreateView(CategoryMixin, CreateView):
     pass
 
 
-class CategoryDeleteView(CategoryMixin, DeleteView):
+class CategoryDeleteView():
     @login_required
     @ajax
-    def delete_place(request):
+    def delete_category(request):
         category = Category.objects.get(pk=int(QueryDict(request.body).get('pk')))
         if category.user == request.user:
             category.delete()

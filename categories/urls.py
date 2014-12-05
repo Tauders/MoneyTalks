@@ -14,10 +14,9 @@ urlpatterns = patterns('',
                            view=CategoryCreateView.as_view(),
                            name='category_create'
                        ),
-
                        url(
                            regex=r'^delete/$',
-                           view=CategoryDeleteView.as_view(),
+                           view=CategoryDeleteView.delete_category,
                            name='category_delete'
                        ),
                        url(
