@@ -1,9 +1,35 @@
-<ol>
+{% load endless %}
+{% load i18n %}
+{% paginate object_list %}
+{% get_pages %}
+
+<table class="table table-hover" style="margin-bottom: 0px; vertical-align: bottom;">
+  <tbody>
   {% for category in category_list %}
-    <li>
-      <a href="update/{{ category.pk }}/">{{ category }}</a>
-      <a href="delete/{{ category.pk }}/">Удалить</a>
-      {% include 'categories/_category_tree.html' with category_list=category.children.all %}
-    </li>
+    <tr>
+      <td class="counter-width">{{ forloop.counter }}</td>
+      <td>{{ category }}
+        <a href="{% url 'category_update' category.pk %}" class="btn btn-default">{% trans "Изменить" %}</a>
+        <a data-id="{{ category.pk }}" class="btn btn-danger" href="#">{% trans "Удалить" %}</a>
+        <br>
+        {% include 'categories/_category_tree.html' with category_list=category.children.all %}
+      </td>
+    </tr>
   {% endfor %}
-</ol>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  $(".btn-danger").on("click", function () {
+    var button = $(this);
+    var id = button.data("id");
+    if (confirm('{% trans "Вы уверены, что хотите удалить эту категорию?" %}') == true) {
+      ajaxPost('{% url 'category_delete' %}', {'pk': id}, function (content) {
+        button.parent().parent().hide();
+      })
+    } else {
+      return false;
+    }
+  });
+</script>
+

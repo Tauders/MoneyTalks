@@ -1,7 +1,12 @@
 # Create your views here.
+import json
+
 from braces.views import LoginRequiredMixin
 from django.core.urlresolvers import reverse
 from django.views.generic import DeleteView, ListView, CreateView, UpdateView
+from django.http import QueryDict, HttpResponse
+from django_ajax.decorators import ajax
+from django.contrib.auth.decorators import login_required
 
 from categories.forms import CategoryForm
 from categories.models import Category
@@ -33,7 +38,21 @@ class CategoryCreateView(CategoryMixin, CreateView):
 
 
 class CategoryDeleteView(CategoryMixin, DeleteView):
-    pass
+    @login_required
+    @ajax
+    def delete_place(request):
+        category = Category.objects.get(pk=int(QueryDict(request.body).get('pk')))
+        if category.user == request.user:
+            category.delete()
+            return HttpResponse(
+                json.dumps({'msg': 'Category was deleted.'}),
+                content_type="application/json"
+            )
+        else:
+            return HttpResponse(
+                json.dumps({"msg": "Category was not deleted."}),
+                content_type="application/json"
+            )
 
 
 class CategoryUpdateView(CategoryMixin, UpdateView):

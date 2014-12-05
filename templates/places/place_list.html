@@ -8,6 +8,7 @@
   <script>$(document).ready(function () {
     $.endlessPaginate();
   });</script>
+
   <h2>{% trans "Список мест" %}</h2>
   <a class="btn btn-primary " href="{% url 'place_create' %}">{% trans "Создать" %}</a>
   {% if object_list %}

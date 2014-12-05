@@ -1,11 +1,40 @@
 {% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Список категорий" %}{% endblock %}
 
 {% block content %}
   {{ block.super }}
+   <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+  <script>$(document).ready(function () {
+    $.endlessPaginate();
+  });</script>
+
+  <h2>{% trans "Список мест" %}</h2>
+  <a class="btn btn-primary " href="{% url 'category_create' %}">{% trans "Создать" %}</a>
   {% if object_list %}
+    <div class="endless_page_template">
     {% include 'categories/_category_tree.html' with category_list=object_list %}
+    </div>
   {% endif %}
-  <ul>
-    <li><a href="{% url 'category_create' %}">Создать</a></li>
+
+  <div class="page-center">
+  {% trans "Показаны записи" %} {{ pages.current_start_index }}
+  - {{ pages.current_end_index }} {% trans "из" %} {{ pages.total_count }}.
+  <br>
+  <ul class="pagination">
+    {% if pages.previous %}
+      <li>{{ pages.previous }}</li>
+    {% endif %}
+    {% for page in pages %}
+      {% if  page.is_current %}
+        <li class="active">{{ page }}</li>
+      {% else %}
+        <li>{{ page }}</li>
+      {% endif %}
+    {% endfor %}
+    {% if pages.next %}
+      <li>{{ pages.next }}</li>
+    {% endif %}
   </ul>
+</div>
 {% endblock content %}
