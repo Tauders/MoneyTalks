@@ -3,11 +3,10 @@ from django.contrib import admin
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import TemplateView
 from django.contrib.auth import views as auth_views
-
+from tastypie.api import Api
 
 from moneytalks.forms import MyLoginForm, MyPasswordChangeForm
 from moneytalks.views import MyRegistration
-from tastypie.api import Api
 from moneytalks.api import UserResource, AccountResource, CategoryResource, PlaceResource, TransactionResource
 
 
@@ -17,7 +16,6 @@ v1_api.register(AccountResource())
 v1_api.register(CategoryResource())
 v1_api.register(PlaceResource())
 v1_api.register(TransactionResource())
-
 
 urlpatterns = patterns('',
                        # Examples:
@@ -52,4 +50,4 @@ urlpatterns = patterns('',
                             'password_change_form': MyPasswordChangeForm},
                            name='auth_password_change'),
                        url(r'^api/', include(v1_api.urls)),
-                       )
+)

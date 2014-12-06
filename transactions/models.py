@@ -10,7 +10,6 @@ from places.models import Place
 
 
 class Transaction(models.Model):
-
     account_from = models.ForeignKey(
         Account, null=True, blank=True,
         related_name='transactions_from',
