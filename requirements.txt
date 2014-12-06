@@ -1,6 +1,6 @@
 Django==1.7
 django-admin-bootstrapped==2.0.5
-django-ajax==2.2.12
+djangoajax==2.2.12
 django-braces==1.4.0
 django-crispy-forms==1.4.0
 django-endless-pagination==2.0
