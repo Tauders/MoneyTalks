@@ -6,9 +6,9 @@
 <table class="table table-hover">
   <thead>
   <tr>
-    <th>#</th>
-    <th>{% trans "Транзакция" %}</th>
-    <th>{% trans "Действия" %}</th>
+    <th></th>
+    <th>{% trans "Transaction" %}</th>
+    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -17,9 +17,8 @@
       <td class="counter-width">{{ forloop.counter }}</td>
       <td>{{ transaction }}</td>
       <td class="action-width">
-        <a href="{% url 'transaction_update' transaction.pk %}"
-           class="btn btn-default">{% trans "Изменить" %}</a>
-        <a data-id="{{ transaction.pk }}" class="btn btn-danger" href="#">{% trans "Удалить" %}</a>
+        <a href="{% url 'transaction_update' transaction.pk %}" class="btn btn-default">{% trans "Edit" %}</a>
+        <a data-id="{{ transaction.pk }}" class="btn btn-danger" href="#">{% trans "Delete" %}</a>
       </td>
     </tr>
   {% endfor %}
@@ -27,8 +26,8 @@
 </table>
 
 <div class="page-center">
-  {% trans "Показаны записи" %} {{ pages.current_start_index }}
-  - {{ pages.current_end_index }} {% trans "из" %} {{ pages.total_count }}.
+  {% trans "Displaying transactions" %} {{ pages.current_start_index }}
+  - {{ pages.current_end_index }} {% trans "from" %} {{ pages.total_count }}.
   <br>
   <ul class="pagination">
     {% if pages.previous %}
@@ -51,7 +50,7 @@
   $(".btn-danger").on("click", function () {
     var button = $(this);
     var id = button.data("id");
-    if (confirm({% trans "Вы уверены, что хотите удалить эту транзакцию?" %}) == true) {
+    if (confirm({% trans "Delete this transaction?" %}) == true) {
       ajaxPost('{% url 'transaction_delete' %}', {'pk': id}, function (content) {
         button.parent().parent().hide();
       })
@@ -60,5 +59,3 @@
     }
   });
 </script>
-
-

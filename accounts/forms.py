@@ -23,4 +23,4 @@ class AccountForm(ModelForm):
         self.helper.field_class = 'col-lg-7'
         self.instance.user = user
 
-        self.helper.add_input(Submit('submit', _('Создать'), css_class="register-submit"))
+        self.helper.add_input(Submit('submit', _('Create account'), css_class="register-submit"))

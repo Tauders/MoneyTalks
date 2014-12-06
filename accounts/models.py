@@ -7,7 +7,7 @@ from django.db import models
 
 
 class Account(models.Model):
-    name = models.CharField(max_length=80, verbose_name=_('Название счёта'))
+    name = models.CharField(max_length=80, verbose_name=_('Account name'))
     user = models.ForeignKey(User, related_name='accounts')
 
     def __str__(self):
@@ -24,5 +24,5 @@ class Account(models.Model):
     def clean(self):
         cleaned_data = super().clean()
         if self.user.accounts.filter(name=self.name).exists():
-            raise ValidationError(_('Название должно быть уникальным'))
+            raise ValidationError(_('Account name must be unique'))
         return cleaned_data

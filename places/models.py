@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Place(models.Model):
-    name = models.CharField(max_length=80, verbose_name=_('Название места'))
+    name = models.CharField(max_length=80, verbose_name=_('Place name'))
     user = models.ForeignKey(User, related_name='places')
 
     def __str__(self):
@@ -14,5 +14,5 @@ class Place(models.Model):
     def clean(self):
         cleaned_data = super().clean()
         if self.user.places.filter(name=self.name).exists():
-            raise ValidationError(_('Название места должно быть уникальным'))
+            raise ValidationError(_('Name must be unique'))
         return cleaned_data

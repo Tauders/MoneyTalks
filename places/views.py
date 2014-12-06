@@ -50,7 +50,7 @@ class PlaceDeleteView():
             )
         else:
             return HttpResponse(
-                json.dumps({"msg": "Place was not deleted."}),
+                json.dumps({'msg': 'Place was not deleted.'}),
                 content_type="application/json"
             )
 

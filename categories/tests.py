@@ -20,7 +20,7 @@ class CategoryTest(TestCase):
         )
         Category.objects.create(name='test', user=user)
         cat2 = Category(name='test', user=user)
-        self.assertRaisesMessage(ValidationError, 'Имя должно быть уникальным', cat2.clean)
+        self.assertRaisesMessage(ValidationError, _('Name must be unique'), cat2.clean)
 
     def test_trycategorynamethesameparent(self):
         user = get_user_model().objects.create(
@@ -29,4 +29,4 @@ class CategoryTest(TestCase):
         parent = Category.objects.create(name='parent', user=user, parent=None)
         Category.objects.create(name='child', user=user, parent=parent)
         child = Category(name='child', user=user, parent=parent)
-        self.assertRaisesMessage(ValidationError, 'Имя должно быть уникальным', child.clean)
+        self.assertRaisesMessage(ValidationError, _('Name must be unique'), child.clean)

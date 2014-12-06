@@ -17,7 +17,7 @@ class CategoryForm(ModelForm):
         super().__init__(*args, **kwargs)
         self.instance.user = user
         self.fields['parent'] = forms.ModelChoiceField(queryset=Category.objects.filter(user=user), required=False,
-                                                       label=_('Потомки'))
+                                                       label=_('Parent category'))
         self.helper = FormHelper()
         self.helper.form_id = 'category-formId'
         self.helper.form_class = 'form-horizontal'
@@ -26,4 +26,4 @@ class CategoryForm(ModelForm):
         self.helper.label_class = 'col-lg-2'
         self.helper.field_class = 'col-lg-7'
         self.instance.user = user
-        self.helper.add_input(Submit('submit', _('Создать'), css_class="register-submit"))
+        self.helper.add_input(Submit('submit', _('Create category'), css_class="register-submit"))

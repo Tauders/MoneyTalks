@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{% trans "Редактирование транзакций" %}{% endblock %}
+
+{% block title %}{% trans "Edit transaction" %}{% endblock %}
 
 {% load crispy_forms_tags %}
 {% block content %}
-  <h2>{% trans "Редактирование транзакций" %}</h2>
+  <h2>{% trans "Edit transaction" %}</h2>
   <br>
   {% crispy form %}
 {% endblock content %}
-

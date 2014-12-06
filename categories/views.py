@@ -50,7 +50,7 @@ class CategoryDeleteView():
             )
         else:
             return HttpResponse(
-                json.dumps({"msg": "Category was not deleted."}),
+                json.dumps({'msg': 'Category was not deleted.'}),
                 content_type="application/json"
             )
 

@@ -10,31 +10,37 @@ from places.models import Place
 
 
 class Transaction(models.Model):
+
     account_from = models.ForeignKey(
         Account, null=True, blank=True,
         related_name='transactions_from',
-        verbose_name=_('Со счёта')
+        verbose_name=_('From account')
     )
+
     account_to = models.ForeignKey(
         Account, null=True, blank=True,
         related_name='transactions_to',
-        verbose_name=_('На счёт')
+        verbose_name=_('To account')
     )
-    user = models.ForeignKey(User, null=True, blank=True, verbose_name=_('Пользователь'))
-    place = models.ForeignKey(Place, null=True, blank=True, verbose_name=_('Место'))
-    category = models.ForeignKey(Category, null=True, blank=True, verbose_name=_('Категория'))
+
+    user = models.ForeignKey(User, null=True, blank=True, verbose_name=_('User'))
+    place = models.ForeignKey(Place, null=True, blank=True, verbose_name=_('Place'))
+    category = models.ForeignKey(Category, null=True, blank=True, verbose_name=_('Category'))
+
     amount = models.DecimalField(
         max_digits=10,
         decimal_places=2,
-        verbose_name=_('Сумма')
+        verbose_name=_('Amount')
     )
+
     datetime = models.DateTimeField(
         default=timezone.now,
-        verbose_name=_('Дата')
+        verbose_name=_('Date')
     )
+
     comments = models.TextField(
         blank=True,
-        verbose_name=_('Комментарий')
+        verbose_name=_('Comment')
     )
 
     def __str__(self):
@@ -48,7 +54,5 @@ class Transaction(models.Model):
     def clean(self):
         cleaned_data = super().clean()
         if self.account_from == self.account_to:
-            raise ValidationError(
-                _('Счета должны быть разные')
-            )
+            raise ValidationError(_('Accounts must differ'))
         return cleaned_data

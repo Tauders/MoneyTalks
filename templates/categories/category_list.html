@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{% trans "Список категорий" %}{% endblock %}
+
+{% block title %}{% trans "Categories" %}{% endblock %}
 
 {% block content %}
   {{ block.super }}
@@ -9,8 +10,8 @@
     $.endlessPaginate();
   });</script>
 
-  <h2>{% trans "Список категорий" %}</h2>
-  <a class="btn btn-primary " href="{% url 'category_create' %}">{% trans "Создать" %}</a>
+  <h2>{% trans "Categories" %}</h2>
+  <a class="btn btn-primary " href="{% url 'category_create' %}">{% trans "Create category" %}</a>
   {% if object_list %}
     <div class="endless_page_template">
       {% include 'categories/_category_tree.html' with category_list=object_list %}
@@ -18,8 +19,8 @@
   {% endif %}
 
   <div class="page-center">
-    {% trans "Показаны записи" %} {{ pages.current_start_index }}
-    - {{ pages.current_end_index }} {% trans "из" %} {{ pages.total_count }}.
+    {% trans "Displaying categories" %} {{ pages.current_start_index }}
+    - {{ pages.current_end_index }} {% trans "from" %} {{ pages.total_count }}.
     <br>
     <ul class="pagination">
       {% if pages.previous %}

@@ -64,7 +64,7 @@ class TransactionDeleteView():
             )
         else:
             return HttpResponse(
-                json.dumps({"msg": "Transaction was not deleted"}),
+                json.dumps({'msg': 'Transaction was not deleted'}),
                 content_type="application/json"
             )
 

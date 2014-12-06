@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% block title %}{% trans "Список транзакций" %}{% endblock %}
+
+{% block title %}{% trans "Transactions" %}{% endblock %}
 
 {% block content %}
   {{ block.super }}
@@ -8,12 +9,12 @@
   <script>$(document).ready(function () {
     $.endlessPaginate();
   });</script>
-  <h2>{% trans "Список транзакций" %}</h2>
-  <a class="btn btn-primary " href="{% url 'transaction_create' %}">{% trans "Создать" %}</a>
-  <a class="btn btn-primary " href="?type=">Всё</a>
-  <a class="btn btn-primary " href="?type=transfer">Перевод</a>
-  <a class="btn btn-primary " href="?type=incoming">Доход</a>
-  <a class="btn btn-primary " href="?type=outgoing">Расход</a>
+  <h2>{% trans "Transactions" %}</h2>
+  <a class="btn btn-primary " href="{% url 'transaction_create' %}">{% trans "Create transaction" %}</a>
+  <a class="btn btn-primary " href="?type=">{% trans "Everything" %}</a>
+  <a class="btn btn-primary " href="?type=incoming">{% trans "Incomes" %}</a>
+  <a class="btn btn-primary " href="?type=outgoing">{% trans "Expenses" %}</a>
+  <a class="btn btn-primary " href="?type=transfer">{% trans "Transfers" %}</a>
   {% if object_list %}
     <div class="endless_page_template">
       {% include page_template %}

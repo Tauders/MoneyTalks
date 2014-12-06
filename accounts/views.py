@@ -50,7 +50,7 @@ class AccountDeleteView():
             )
         else:
             return HttpResponse(
-                json.dumps({"msg": "Account was not deleted."}),
+                json.dumps({'msg': 'Account was not deleted.'}),
                 content_type="application/json"
             )
 

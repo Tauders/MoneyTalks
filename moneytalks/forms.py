@@ -15,7 +15,7 @@ class MyLoginForm(AuthenticationForm):
         self.helper.form_action = '.'
         self.helper.label_class = 'col-md-4'
         self.helper.field_class = 'col-md-8'
-        self.helper.add_input(Submit('submit', _('Войти'), css_class="login-submit"))
+        self.helper.add_input(Submit('submit', _('Sign In'), css_class="login-submit"))
 
 
 class MyRegistrationForm(RegistrationForm):
@@ -28,7 +28,7 @@ class MyRegistrationForm(RegistrationForm):
         self.helper.form_action = '.'
         self.helper.label_class = 'col-md-2'
         self.helper.field_class = 'col-md-6'
-        self.helper.add_input(Submit('submit', _('Зарегистрироваться'), css_class="register-submit"))
+        self.helper.add_input(Submit('submit', _('Sign Up'), css_class="register-submit"))
 
 
 class MyPasswordChangeForm(PasswordChangeForm):
@@ -41,4 +41,4 @@ class MyPasswordChangeForm(PasswordChangeForm):
         self.helper.form_action = '.'
         self.helper.label_class = 'col-md-4'
         self.helper.field_class = 'col-md-6'
-        self.helper.add_input(Submit('submit', _('Сменить пароль'), css_class="col-md-offset-4"))
+        self.helper.add_input(Submit('submit', _('Change password'), css_class="col-md-offset-4"))

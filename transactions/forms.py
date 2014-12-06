@@ -25,13 +25,17 @@ class TransactionForm(ModelForm):
         self.helper.form_action = '.'
         self.helper.label_class = 'col-lg-2'
         self.helper.field_class = 'col-lg-7'
-        self.helper.add_input(Submit('submit', 'Создать', css_class="col-lg-offset-2"))
+        self.helper.add_input(Submit('submit', _('Create transaction'), css_class="col-lg-offset-2"))
         self.instance.user = user
+
         self.fields['account_from'] = forms.ModelChoiceField(queryset=Account.objects.filter(user=user), required=False,
-                                                             label=_('Со счёта'))
+                                                             label=_('From account'))
+
         self.fields['account_to'] = forms.ModelChoiceField(queryset=Account.objects.filter(user=user), required=False,
-                                                           label=_('На счёт'))
+                                                           label=_('To account'))
+
         self.fields['place'] = forms.ModelChoiceField(queryset=Place.objects.filter(user=user), required=False,
-                                                      label=_('Место'))
+                                                      label=_('Place'))
+
         self.fields['category'] = forms.ModelChoiceField(queryset=Category.objects.filter(user=user), required=False,
-                                                         label=_('Категория'))
+                                                         label=_('Category'))

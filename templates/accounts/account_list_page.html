@@ -6,10 +6,10 @@
 <table class="table table-hover">
   <thead>
   <tr>
-    <th>#</th>
-    <th>{% trans "Название" %}</th>
-    <th>{% trans "Баланс" %}</th>
-    <th>{% trans "Действия" %}</th>
+    <th></th>
+    <th>{% trans "Name" %}</th>
+    <th>{% trans "Balance" %}</th>
+    <th></th>
 
   </tr>
   </thead>
@@ -20,8 +20,8 @@
       <td>{{ account }}</td>
       <td>{{ account.balance }}</td>
       <td class="action-width">
-        <a href="{% url 'account_update' account.pk %}" class="btn btn-default">{% trans "Изменить" %}</a>
-        <a data-id="{{ account.pk }}" class="btn btn-danger" href="#">{% trans "Удалить" %}</a>
+        <a href="{% url 'account_update' account.pk %}" class="btn btn-default">{% trans "Edit" %}</a>
+        <a data-id="{{ account.pk }}" class="btn btn-danger" href="#">{% trans "Delete" %}</a>
       </td>
     </tr>
   {% endfor %}
@@ -29,8 +29,8 @@
 </table>
 
 <div class="page-center">
-  {% trans "Показаны записи" %} {{ pages.current_start_index }}
-  - {{ pages.current_end_index }} {% trans "из" %} {{ pages.total_count }}.
+  {% trans "Displaying accounts" %} {{ pages.current_start_index }}
+  - {{ pages.current_end_index }} {% trans "from" %} {{ pages.total_count }}
   <br>
   <ul class="pagination">
     {% if pages.previous %}
@@ -53,7 +53,7 @@
   $(".btn-danger").on("click", function () {
     var button = $(this);
     var id = button.data("id");
-    if (confirm('{% trans "Вы уверены, что хотите удалить этот счёт?" %}') == true) {
+    if (confirm('{% trans "Delete this account?" %}') == true) {
       ajaxPost('{% url 'account_delete' %}', {'pk': id}, function (content) {
         button.parent().parent().hide();
       })
