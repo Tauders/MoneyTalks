@@ -48,7 +48,8 @@ INSTALLED_APPS = (
     'accounts',
     'categories',
     'places',
-    'transactions'
+    'transactions',
+    'tastypie',
 )
 
 REGISTRATION_AUTO_LOGIN = True  # Automatically log the user in.
@@ -81,6 +82,7 @@ DATABASES = {
     }
 }
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -104,6 +106,7 @@ LOCALE_PATHS = (
 )
 
 PREFIX_DEFAULT_LOCALE = False
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
