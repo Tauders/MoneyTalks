@@ -6,7 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 
 class Category(models.Model):
     name = models.CharField(max_length=80, verbose_name=_('Name'))
-    parent = models.ForeignKey('self', null=True, blank=True, related_name='children', verbose_name=_('Parent category'))
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='children',
+                               verbose_name=_('Parent category'))
     user = models.ForeignKey(User, related_name='categories', verbose_name=_('User'))
 
     class Meta:

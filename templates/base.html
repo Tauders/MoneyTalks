@@ -59,18 +59,18 @@
 <div class="container ">
   {% block content %}{% endblock %}
 
-    <div class="navbar navbar-inverse navbar-fixed-bottom row-fluid">
-        <div class="container">
-            <p class="navbar-text">&copy; {% trans "8VM44, TPU" %}
-                {% for lang in LANGUAGES %}
-                    {% ifequal lang.0 LANGUAGE_CODE %}
-                        <p class="navbar-text">{{ lang.1 }}</p>
-                    {% else %}
-                        <p class="navbar-text"><a href="{{ request.path|chlocale:lang.0 }}">{{ lang.1 }}</a></p>
-                    {% endifequal %}
-                {% endfor %}
-        </div>
+  <div class="navbar navbar-inverse navbar-fixed-bottom row-fluid">
+    <div class="container">
+      <p class="navbar-text">&copy; {% trans "8VM44, TPU" %}
+        {% for lang in LANGUAGES %}
+          {% ifequal lang.0 LANGUAGE_CODE %}
+            <p class="navbar-text">{{ lang.1 }}</p>
+          {% else %}
+            <p class="navbar-text"><a href="{{ request.path|chlocale:lang.0 }}">{{ lang.1 }}</a></p>
+          {% endifequal %}
+        {% endfor %}
     </div>
+  </div>
 
 </div>
 <!-- /.container -->

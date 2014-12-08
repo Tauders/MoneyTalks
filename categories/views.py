@@ -3,10 +3,11 @@ import json
 
 from braces.views import LoginRequiredMixin
 from django.core.urlresolvers import reverse
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView
 from django.http import QueryDict, HttpResponse
 from django_ajax.decorators import ajax
 from django.contrib.auth.decorators import login_required
+from endless_pagination.views import AjaxListView
 
 from categories.forms import CategoryForm
 from categories.models import Category
@@ -28,7 +29,7 @@ class CategoryMixin(LoginRequiredMixin):
         return kwargs
 
 
-class CategoryListView(CategoryMixin, ListView):
+class CategoryListView(CategoryMixin, AjaxListView):
     def get_queryset(self):
         return Category.objects.filter(user=self.request.user, parent=None)
 

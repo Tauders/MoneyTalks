@@ -16,26 +16,26 @@
     <div class="endless_page_template">
       {% include 'categories/_category_tree.html' with category_list=object_list %}
     </div>
-  {% endif %}
 
-  <div class="page-center">
-    {% trans "Displaying categories" %} {{ pages.current_start_index }}
-    - {{ pages.current_end_index }} {% trans "from" %} {{ pages.total_count }}.
-    <br>
-    <ul class="pagination">
-      {% if pages.previous %}
-        <li>{{ pages.previous }}</li>
-      {% endif %}
-      {% for page in pages %}
-        {% if  page.is_current %}
-          <li class="active">{{ page }}</li>
-        {% else %}
-          <li>{{ page }}</li>
+    <div class="page-center">
+      {% trans "Displaying categories" %} {{ pages.current_start_index }}
+      - {{ pages.current_end_index }} {% trans "from" %} {{ pages.total_count }}.
+      <br>
+      <ul class="pagination">
+        {% if pages.previous %}
+          <li>{{ pages.previous }}</li>
         {% endif %}
-      {% endfor %}
-      {% if pages.next %}
-        <li>{{ pages.next }}</li>
-      {% endif %}
-    </ul>
-  </div>
+        {% for page in pages %}
+          {% if  page.is_current %}
+            <li class="active">{{ page }}</li>
+          {% else %}
+            <li>{{ page }}</li>
+          {% endif %}
+        {% endfor %}
+        {% if pages.next %}
+          <li>{{ pages.next }}</li>
+        {% endif %}
+      </ul>
+    </div>
+  {% endif %}
 {% endblock content %}
